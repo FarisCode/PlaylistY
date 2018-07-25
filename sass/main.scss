@@ -9,6 +9,7 @@ body {
     margin: 0;
     margin-top: 100px;
     padding: 0;
+    background-color: #191d1e;
 }
 
 ::-webkit-scrollbar {
@@ -33,87 +34,105 @@ body {
     width: 95%;
     margin: auto;
     margin-top: 20px;
-}
-
-.left {
-    width: 65%;
-    border: 1px solid #888;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 1px 0 5px rgba(0, 0, 0, 0.18);
-    iframe {
-        width: 100%;
+    @media (max-width:1000px) {
+        display: block;
     }
 }
-
+.left {
+    width: 65%;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8);
+    iframe {
+        height: 100%;
+        width: 100%;
+    }
+    @media (max-width:1000px) {
+        width: 100%;
+        height: 65vh;
+    }
+}
 .right {
+    box-sizing: border-box;
     width: 30%;
-    height: 460px;
+    height: 65vh;
     overflow: auto;
-    border: 1px solid #888;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 1px 0 5px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 2px 0 5px rgba(0, 0, 0, 0.8);
     padding: 10px;
+    @media (max-width:1000px) {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
     h3{
+        color: #ddd;
+        text-align: center;
         margin: 0;
         margin-top: 5px;
     }
     .f-box {
+        color: #ddd;
+        box-sizing: border-box;
+        background-color: #191d1e;
         animation-duration: 2s;
         position: relative;
         overflow: auto;
-        padding: 0 10px;
+        padding-left: 10px;
+        padding-right: 30px;
+        cursor: pointer;
+        width: 100%;
         margin: auto;
         margin-top: 20px;
-        cursor: pointer;
-        width: 90%;
-        border: 1px solid #888;
         height: 50px;
         line-height: 50px;
-        background: #fff;
         border-radius: 2px;
         display: inline-block;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 1px 0 5px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 1.5px 5px rgba(0, 0, 0, 0.8), 1.5px 0 5px rgba(0, 0, 0, 0.8);
         i {
-            margin-right: 15px;
+            margin-right: 10px;
         }
         >span.cross {
-            color: #fff;
-            height: 20px;
+            color: #000;
+            height: 17px;
             font-weight: bold;
-            width: 20px;
+            width: 17px;
             background-color: #999;
-            line-height: 20px;
+            line-height: 17px;
             text-align: center;
             border-radius: 50%;
-            border: 1px solid #ddd;
             position: absolute;
-            right: 1px;
+            box-shadow: 0 2px 5px #000, 2px 0 5px #000;
+            right: 8px;
             top: 25%;
+        }
+        >span.cross:active {
+            box-shadow: none;
         }
     }
     .f-box:active {
         box-shadow: none;
+        box-shadow: 0 .1px 1px rgba(0, 0, 0, 0.8), .1px 0 1px rgba(0, 0, 0, 0.8);
+
+        // border: 1px solid #000;
     }
 }
-
 .bottomFix {
+    box-shadow: 0 -1.5px 5px rgba(0, 0, 0, 0.8);
     width: 100%;
-    border-top: 2px solid #bbb;
     height: 60px;
     line-height: 60px;
     box-sizing: border-box;
-    background-color: #282828;
+    background-color: #191d1e;
     position: fixed;
     bottom: 0;
     text-align: center;
     z-index: 50;
 }
-
 .topFix {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    border-bottom: 2px solid #bbb;
+    box-shadow: 0 1.5px 5px rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
-    background-color: #282828;
+    background-color: #191d1e;
     position: fixed;
     top: 0;
     text-align: center;
@@ -123,7 +142,6 @@ body {
         margin: 0;
     }
 }
-
 .f-form {
     height: 20px;
     min-width: 200px;
@@ -133,7 +151,6 @@ body {
     outline-color: rgba(0, 255, 255, 0.5);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 1px 0 5px rgba(0, 0, 0, 0.18);
 }
-
 .f-form:hover {
     opacity: 0.8;
 }
