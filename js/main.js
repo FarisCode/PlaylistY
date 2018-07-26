@@ -1,11 +1,9 @@
-
 var songs = [];
 
 var ppp = new Song("Perfect", "Ed Sheeran", embedder("https://www.youtube.com/watch?v=SvvXsyFI3b8"));
 songs.push(ppp);
 ppp = new Song("Without You!", "Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"));
 songs.push(ppp);
-
 
 function Song(name, artist, link) {
     this.name = name;

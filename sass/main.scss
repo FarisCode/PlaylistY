@@ -5,13 +5,12 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gaegu', cursive;
     margin: 0;
     margin-top: 100px;
     padding: 0;
     background-color: #191d1e;
 }
-
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -114,19 +113,10 @@ body {
         // border: 1px solid #000;
     }
 }
-.bottomFix {
-    box-shadow: 0 -1.5px 5px rgba(0, 0, 0, 0.8);
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    box-sizing: border-box;
-    background-color: #191d1e;
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    z-index: 50;
-}
 .topFix {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
     width: 100%;
     height: 60px;
     line-height: 60px;
@@ -135,7 +125,6 @@ body {
     background-color: #191d1e;
     position: fixed;
     top: 0;
-    text-align: center;
     z-index: 50;
     h1 {
         color: #fff;

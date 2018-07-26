@@ -10,12 +10,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
         crossorigin="anonymous">
     <link rel="icon" href="img/icon.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
 </head>
 
 <body>
     <div class="topFix">
         <h1>PlaylistY</h1>
+        <div>
+            <input id="name" class="f-form" type="text" placeholder="Song Name">
+            <input id="artist" class="f-form" type="text" placeholder="Artist">
+            <input id="link" class="f-form" type="text" placeholder="Youtube Link">
+            <button class="f-btn" onclick="addSong()">Add</button>
+        </div>
     </div>
     <div class="container">
         <div class="left">
@@ -30,12 +36,6 @@
                 <span class="cross" onclick="deleteSong(0)">x</span>
             </div> -->
         </div>
-    </div>
-    <div class="bottomFix">
-        <input id="name" class="f-form" type="text" placeholder="Song Name">
-        <input id="artist" class="f-form" type="text" placeholder="Artist">
-        <input id="link" class="f-form" type="text" placeholder="Youtube Link">
-        <button class="f-btn" onclick="addSong()">Add</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
