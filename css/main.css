@@ -158,5 +158,29 @@ body {
     opacity: 1; }
   100% {
     opacity: 0; } }
+.swal-modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 3px solid #555; }
+
+.swal-title {
+  margin: 0px;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+  margin-bottom: 28px; }
+
+.swal-text {
+  display: block;
+  text-align: center;
+  color: #ddd; }
+
+.swal-button--confirm {
+  background-color: #191d1e; }
+
+.swal-button--danger:active {
+  background-color: #30383a; }
+
+.swal-button--danger:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(116, 136, 150, 0.29); }
 
 /*# sourceMappingURL=main.css.map */

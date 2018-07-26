@@ -1,5 +1,4 @@
 var songs = [];
-
 var ppp = new Song("Perfect", "Ed Sheeran", embedder("https://www.youtube.com/watch?v=SvvXsyFI3b8"));
 songs.push(ppp);
 ppp = new Song("Without You!", "Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"));
@@ -10,13 +9,13 @@ function Song(name, artist, link) {
     this.link = link;
     this.artist = artist;
 }
-function creation(temp,id) {
-        document.getElementById('list').innerHTML += "<div class=\"listing" + id + " f-box\" onclick=\"{ play(songs[" + id + "]) }\"> <i class=\"fab fa-itunes-note\" ></i ><span class=\"title\">" + temp.name + "</span> - <span class=\"artist\">" + temp.artist + "</span><span class=\"cross\" onclick=\"deleteSong(" + id + ")\">x</span></div >";
-        var appearingItem=document.getElementsByClassName('listing' + id)[0];
-        appearingItem.style.animationName = 'appear';
-        setTimeout(function(){
-            appearingItem.style.animationName = 'empty';
-        }, 2000);
+function creation(temp, id) {
+    document.getElementById('list').innerHTML += "<div class=\"listing" + id + " f-box\" onclick=\"{ play(songs[" + id + "]) }\"> <i class=\"fab fa-itunes-note\" ></i ><span class=\"title\">" + temp.name + "</span> - <span class=\"artist\">" + temp.artist + "</span><span class=\"cross\" onclick=\"deleteSong(" + id + ",event)\">x</span></div >";
+    var appearingItem = document.getElementsByClassName('listing' + id)[0];
+    appearingItem.style.animationName = 'appear';
+    setTimeout(function () {
+        appearingItem.style.animationName = 'empty';
+    }, 2000);
 }
 
 function addSong() {
@@ -26,7 +25,7 @@ function addSong() {
     var regex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/;
     if (link != null && regex.test(link)) {
         var temp = new Song(name, artist, embedder(link));
-        creation(temp,songs.length);
+        creation(temp, songs.length);
         songs.push(temp);
         document.getElementById("link").style.borderColor = "#bbb";
         document.getElementById("name").value = null;
@@ -37,24 +36,47 @@ function addSong() {
         document.getElementById("link").style.borderColor = "red";
     }
 }
-function deleteSong(id) {
-    if (confirm("Are you sure you want to delete it from your playlist?")) {
-        var frame = document.getElementById("myFrame");
-        var ele = document.getElementsByClassName("listing" + id)[0];
-        ele.style.animationName="disappear";
-        setTimeout(function(){
-            ele.remove();
-        },1500);
-        if (songs[id].link === frame.getAttribute('src')) {
-            frame.setAttribute('src', 'pages/blank.html');
-        }
-        songs[id] = undefined;
-    }
+function deleteSong(id, event) {
+    event.stopPropagation();
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Video!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                var frame = document.getElementById("myFrame");
+                var ele = document.getElementsByClassName("listing" + id)[0];
+                ele.style.animationName = "disappear";
+                setTimeout(function () {
+                    ele.remove();
+                }, 1500);
+                if (songs[id].link === frame.getAttribute('src')) {
+                    frame.setAttribute('src', 'pages/blank.html');
+                }
+                songs[id] = undefined;
+            }
+        });
+
+    // if (confirm("Are you sure you want to delete it from your playlist?")) {
+    //     var frame = document.getElementById("myFrame");
+    //     var ele = document.getElementsByClassName("listing" + id)[0];
+    //     ele.style.animationName = "disappear";
+    //     setTimeout(function () {
+    //         ele.remove();
+    //     }, 1500);
+    //     if (songs[id].link === frame.getAttribute('src')) {
+    //         frame.setAttribute('src', 'pages/blank.html');
+    //     }
+    //     songs[id] = undefined;
+    // }
 }
 
 (function start() {
     for (let i = 0; i < songs.length; i++) {
-        creation(songs[i],i);
+        creation(songs[i], i);
     }
     play(songs[0]);
 })();

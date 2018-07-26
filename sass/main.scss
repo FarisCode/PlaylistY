@@ -11,6 +11,7 @@ body {
     padding: 0;
     background-color: #191d1e;
 }
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -33,10 +34,11 @@ body {
     width: 95%;
     margin: auto;
     margin-top: 20px;
-    @media (max-width:1000px) {
+    @media (max-width: 1000px) {
         display: block;
     }
 }
+
 .left {
     width: 65%;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8);
@@ -49,6 +51,7 @@ body {
         height: 65vh;
     }
 }
+
 .right {
     box-sizing: border-box;
     width: 30%;
@@ -56,12 +59,12 @@ body {
     overflow: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 2px 0 5px rgba(0, 0, 0, 0.8);
     padding: 10px;
-    @media (max-width:1000px) {
+    @media (max-width: 1000px) {
         width: 100%;
         height: auto;
         margin-top: 20px;
     }
-    h3{
+    h3 {
         color: #ddd;
         text-align: center;
         margin: 0;
@@ -108,11 +111,10 @@ body {
     }
     .f-box:active {
         box-shadow: none;
-        box-shadow: 0 .1px 1px rgba(0, 0, 0, 0.8), .1px 0 1px rgba(0, 0, 0, 0.8);
-
-        // border: 1px solid #000;
+        box-shadow: 0 .1px 1px rgba(0, 0, 0, 0.8), .1px 0 1px rgba(0, 0, 0, 0.8); // border: 1px solid #000;
     }
 }
+
 .topFix {
     display: flex;
     justify-content: space-between;
@@ -131,6 +133,7 @@ body {
         margin: 0;
     }
 }
+
 .f-form {
     height: 20px;
     min-width: 200px;
@@ -140,6 +143,7 @@ body {
     outline-color: rgba(0, 255, 255, 0.5);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 1px 0 5px rgba(0, 0, 0, 0.18);
 }
+
 .f-form:hover {
     opacity: 0.8;
 }
@@ -183,4 +187,31 @@ body {
     100% {
         opacity: 0;
     }
+}
+
+.swal-modal {
+    background-color: rgba(0,0,0, 0.9);
+    border: 3px solid #555;
+}
+.swal-title {
+    margin: 0px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+    margin-bottom: 28px;
+  }
+  .swal-text {
+    display: block;
+    text-align: center;
+    color: #ddd;
+  }
+  
+  .swal-button--confirm{
+    background-color: #191d1e;
+  }
+  .swal-button--danger:active{
+    background-color: lighten(#191d1e,10%);
+  }
+  .swal-button--danger:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(116,136,150,.29);
 }
