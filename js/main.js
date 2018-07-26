@@ -1,21 +1,24 @@
 var songs = [];
-var ppp = new Song("Perfect", "Ed Sheeran", embedder("https://www.youtube.com/watch?v=SvvXsyFI3b8"),songs.length);
+var currSongID;
+var ppp = new Song("Perfect - Ed Sheeran", embedder("https://www.youtube.com/watch?v=iKzRIweSBLA"),songs.length);
 songs.push(ppp);
-ppp = new Song("Without You!", "Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"),songs.length);
+ppp = new Song("Without You! - Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"),songs.length);
 songs.push(ppp);
-ppp = new Song("Closer", "The Chainsmokers", embedder("https://www.youtube.com/watch?v=_bmHvLjsqp8"),songs.length);
+ppp = new Song("Sad Song - We The Kings", embedder("https://www.youtube.com/watch?v=BZsXcc_tC-o"),songs.length);
 songs.push(ppp);
-ppp = new Song("Girls Like You", "Maroon 5", embedder("https://www.youtube.com/watch?v=aJOTlE1K90k"),songs.length);
+ppp = new Song("Closer - The Chainsmokers", embedder("https://www.youtube.com/watch?v=_bmHvLjsqp8"),songs.length);
+songs.push(ppp);
+ppp = new Song("Girls Like You - Maroon 5", embedder("https://www.youtube.com/watch?v=aJOTlE1K90k"),songs.length);
 songs.push(ppp);
 
-function Song(name, artist, link, id) {
+function Song(name, link, id) {
     this.name = name;
     this.link = link;
-    this.artist = artist;
     this.id=id;
 }
-function creation(temp, id) {
-    document.getElementById('list').innerHTML += "<div class=\"listing" + id + " f-box\" onclick=\"{ play(songs[" + id + "]) }\"> <i class=\"fab fa-itunes-note\" ></i ><span class=\"title\">" + temp.name + "</span> - <span class=\"artist\">" + temp.artist + "</span> <i class=\"song"+id+" fas fa-play-circle\"></i> <span class=\"cross\" onclick=\"deleteSong(" + id + ",event)\">x</span></div >";
+function creation(temp) {
+    var id=temp.id;
+    document.getElementById('list').innerHTML += "<div class=\"listing" + id + " f-box\" onclick=\"{ play(songs[" + id + "]) }\"> <i class=\"fab fa-itunes-note\" ></i ><span class=\"title\">" + temp.name + "</span> <i class=\"song"+id+" fas fa-play-circle\"></i> <span class=\"cross\" onclick=\"deleteSong(" + id + ",event)\">x</span></div >";
     var appearingItem = document.getElementsByClassName('listing' + id)[0];
     appearingItem.style.animationName = 'appear';
     setTimeout(function () {
@@ -24,16 +27,14 @@ function creation(temp, id) {
 }
 function addSong() {
     var name = document.getElementById("name").value;
-    var artist = document.getElementById("artist").value;
     var link = document.getElementById("link").value;
     var regex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/;
     if (link != null && regex.test(link)) {
-        var temp = new Song(name, artist, embedder(link));
-        creation(temp, songs.length);
+        var temp = new Song(name, embedder(link),songs.length);
+        creation(temp);
         songs.push(temp);
         document.getElementById("link").style.borderColor = "#bbb";
         document.getElementById("name").value = null;
-        document.getElementById("artist").value = null;
         document.getElementById("link").value = null;
     } else {
         console.log("Invalid YT Link!..");
@@ -44,7 +45,7 @@ function deleteSong(id, event) {
     event.stopPropagation();
     swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this Video!",
+        text: "Once deleted, you will not be able to recover this video!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -56,15 +57,19 @@ function deleteSong(id, event) {
             setTimeout(function () {
                 ele.remove();
             }, 1500);
-            var temp=songs[id].link;
             songs[id] = undefined;
-            if (temp === frame.getAttribute('src')) {
+            if (currSongID === id) {
                 frame.setAttribute('src', 'pages/blank.html');
                 console.log(songs);
-                for (var i=0;i<songs.length;i++) {
+                var flag=0;
+                for (var i=currSongID;i<songs.length;i++) {
                     if (songs[i]!=undefined) {
                         play(songs[i]);
                         break;
+                    }
+                    if (i===songs.length-1 && flag===0) {
+                        flag=1;
+                        i=-1;
                     }
                 }
             }
@@ -80,6 +85,9 @@ function deleteSong(id, event) {
 function play(song) {
     if (song != undefined) {
         document.getElementById("myFrame").setAttribute('src', song.link);
+        currSongID=song.id;
+        document.getElementById('title').innerHTML="<i class=\"fab fa-itunes-note\"></i> "+song.name;
+        setTimeout(function(){markPlaying(song.id)},1000);
     }
 }
 function markPlaying(id){

@@ -18,9 +18,8 @@
     <div class="topFix">
         <h1>
             <i class="fab fa-itunes-note"></i> PlaylistY</h1>
-        <div>
+        <div class="topFix-right">
             <input id="name" class="f-form" type="text" placeholder="Song Name">
-            <input id="artist" class="f-form" type="text" placeholder="Artist">
             <input id="link" class="f-form" type="text" placeholder="Youtube Link">
             <button class="f-btn" onclick="addSong()">Add</button>
         </div>
@@ -28,9 +27,10 @@
     <div class="container">
         <div class="left">
             <iframe id="myFrame" width="786" height="480" src="" frameborder="0" allow="autoplay;" allowfullscreen></iframe>
+            <h3 id="title"></h3>
         </div>
         <div class="right" id="list">
-            <h3>Your Favourite</h3>
+            <h3>Your Favourites</h3>
 
             <!-- dynamic creation here -->
 
