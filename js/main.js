@@ -85,6 +85,7 @@ function deleteSong(id, event) {
 function play(song) {
     if (song != undefined) {
         document.getElementById("myFrame").setAttribute('src', song.link);
+        document.getElementById("dwn").setAttribute('href', "https://en.savefrom.net/#url="+song.link);
         currSongID=song.id;
         document.getElementById('title').innerHTML="<i class=\"fab fa-itunes-note\"></i> "+song.name;
         setTimeout(function(){markPlaying(song.id)},1000);

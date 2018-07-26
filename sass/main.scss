@@ -43,6 +43,11 @@ body {
 .left {
     width: 65%;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8);
+    >div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     iframe {
         height: 100%;
         width: 100%;
@@ -200,6 +205,30 @@ body {
         opacity: 1;
     }
 }
+
+.dwnbtn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 6px 12px;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.10);
+}
+
+.dwnbtn:hover {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 1px 0 5px rgba(0, 0, 0, 0.18);
+}
+
+.dwnbtn:active {
+    opacity: 0.9;
+    box-shadow: none;
+}
+
 
 @keyframes disappear {
     0% {
