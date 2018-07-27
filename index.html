@@ -18,7 +18,7 @@
 <body>
     <div class="topFix">
         <h1>
-            <i class="fab fa-itunes-note"></i> PlaylistY</h1>
+            <i class="fab fa-itunes-note"></i> PlaylistY!</h1>
         <div class="topFix-right">
             <input id="name" class="f-form" type="text" placeholder="Song Name">
             <input id="link" class="f-form" type="text" placeholder="Youtube Link">
@@ -33,11 +33,17 @@
                 <a id="dwn" class="dwnbtn" href="https://en.savefrom.net/#url=#" target="_blank">Download</a>
             </div>
         </div>
-        <div class="right" id="list">
+        <div class="rightContainer">
             <h3>Your Favourites</h3>
+            <div class="right" id="list">
 
-            <!-- dynamic creation here -->
+                <!-- dynamic creation here -->
 
+            </div>
+            <div class="local">
+                <a class="local-load dwnbtn" onclick="loadPlaylist()">Load</a>
+                <a class="local-save dwnbtn" onclick="savePlaylist()">Save</a>
+            </div>
         </div>
     </div>
 
