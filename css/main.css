@@ -1,4 +1,5 @@
 * {
+  transition: 0.2s;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis; }
@@ -254,7 +255,6 @@ body {
   100% {
     opacity: 0; } }
 .swal-modal {
-  background-color: #dedede;
   opacity: 0.5;
   border: 3px solid #555; }
 
@@ -266,19 +266,11 @@ body {
 .swal-title {
   margin: 0px;
   font-size: 16px;
-  margin-bottom: 28px;
-  color: inherit; }
+  margin-bottom: 28px; }
 
 .swal-text {
   display: block;
-  text-align: center;
-  color: inherit; }
-
-.swal-button--confirm {
-  background-color: #c5c5c5; }
-
-.swal-button--danger:active {
-  background-color: #f8f8f8; }
+  text-align: center; }
 
 .swal-button--danger:focus {
   box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(116, 136, 150, 0.29); }

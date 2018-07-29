@@ -1,6 +1,6 @@
 var songs = [];
 var currSongID;
-themeSwitchID=0;
+themeSwitchID = 0;
 var ppp = new Song("Perfect - Ed Sheeran", embedder("https://www.youtube.com/watch?v=iKzRIweSBLA"), songs.length);
 songs.push(ppp);
 ppp = new Song("Without You! - Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"), songs.length);
@@ -149,8 +149,8 @@ function savePlaylist() {
 function checkEmpty(arr) {
     var flag = false;
     console.log(arr);
-    
-    if (!(arr === undefined || arr===null)) {
+
+    if (!(arr === undefined || arr === null)) {
         for (let i = 0; i < arr.length; i++) {
             const element = arr[i];
             if (element != null || element != undefined) {
@@ -177,7 +177,7 @@ function loadPlaylist() {
                         creation(songs[i]);
                     }
                 }
-                swal({text: "Playlist Loaded!",icon: "success",});
+                swal({ text: "Playlist Loaded!", icon: "success", });
                 for (var i = 0; i < songs.length; i++) {
                     if (songs[i] != undefined) {
                         play(songs[i]);
@@ -193,39 +193,44 @@ function loadPlaylist() {
         }
     });
 }
-function styling(name,property,value,shadowVal){
-    document.getElementsByClassName(name)[0].style[property]=value;
-    document.getElementsByClassName(name)[0].style.boxShadow=shadowVal;
-    if (name==='f-box') {
-        let temp=document.getElementsByClassName(name);
+function styling(name, property, value, shadowVal) {
+    document.getElementsByClassName(name)[0].style[property] = value;
+    if (shadowVal != undefined) {
+        document.getElementsByClassName(name)[0].style.boxShadow = shadowVal;
+    }
+    if (name === 'f-box') {
+        let temp = document.getElementsByClassName(name);
         for (let i = 0; i < temp.length; i++) {
             const element = temp[i];
-            element.style[property]=value;
-            element.style.boxShadow=shadowVal;
+            element.style[property] = value;
+            if (shadowVal != undefined) {
+                element.style.boxShadow = shadowVal;
+            }
         }
     }
 }
-function themeSwitch(){
-    arr=['topFix','left','rightContainer','f-box'];
-    if (themeSwitchID===0) {
-        shadowVal='0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)';
-        document.getElementsByTagName('body')[0].style.backgroundColor='#191d1e';
-        document.getElementsByTagName('body')[0].style.color='#dedede';
+function themeSwitch() {
+    arr = ['topFix', 'left', 'rightContainer', 'f-box'];
+    if (themeSwitchID === 0) {
+        shadowVal = '0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)';
+        document.getElementsByTagName('body')[0].style.backgroundColor = '#191d1e';
+        document.getElementsByTagName('body')[0].style.color = '#dedede';
         for (let index = 0; index < arr.length; index++) {
-            styling(arr[index],'backgroundColor','#191d1e',shadowVal);
+            styling(arr[index], 'backgroundColor', '#191d1e', shadowVal);
         }
-        document.getElementById('dot').style.marginLeft='20px';
-        themeSwitchID=1;
-        
-    }else{
-        shadowVal='0 3px 5px rgba(0, 0, 0, 0.3), 3px 0 5px rgba(0, 0, 0, 0.3)';
-        document.getElementsByTagName('body')[0].style.backgroundColor='#dedede';
-        document.getElementsByTagName('body')[0].style.color='#333';
+        // styling('swal-modal', 'backgroundColor', '#191d1e');
+        document.getElementById('dot').style.marginLeft = '20px';
+        themeSwitchID = 1;
+
+    } else {
+        shadowVal = '0 3px 5px rgba(0, 0, 0, 0.3), 3px 0 5px rgba(0, 0, 0, 0.3)';
+        document.getElementsByTagName('body')[0].style.backgroundColor = '#dedede';
+        document.getElementsByTagName('body')[0].style.color = '#333';
         for (let index = 0; index < arr.length; index++) {
-            styling(arr[index],'backgroundColor','#fff',shadowVal);
+            styling(arr[index], 'backgroundColor', '#fff', shadowVal);
         }
-        styling('f-box','backgroundColor','#ddd',shadowVal);
-        document.getElementById('dot').style.marginLeft='0px';
-        themeSwitchID=0;
+        styling('f-box', 'backgroundColor', '#ddd', shadowVal);
+        document.getElementById('dot').style.marginLeft = '0px';
+        themeSwitchID = 0;
     }
 }
