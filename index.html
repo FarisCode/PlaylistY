@@ -14,15 +14,20 @@
     <link rel="icon" href="img/icon.png">
     <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
 </head>
-
-<body>
+<body id="body">
     <div class="topFix">
         <h1>
             <i class="fab fa-itunes-note"></i> PlaylistY!</h1>
         <div class="topFix-right">
             <input id="name" class="f-form" type="text" placeholder="Song Name">
             <input id="link" class="f-form" type="text" placeholder="Youtube Link">
-            <button class="f-btn" onclick="addSong()">Add</button>
+            <button class="dwnbtn" onclick="addSong()">Add</button>
+        </div>
+    </div>
+    <div class="containTheme">
+        <span>Theme ::</span>
+        <div class="switch" onclick=themeSwitch()>
+            <div id="dot"></div>
         </div>
     </div>
     <div class="container">
