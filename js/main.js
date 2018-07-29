@@ -1,6 +1,8 @@
 var songs = [];
 var currSongID;
 themeSwitchID = 0;
+ppp = new Song("Girls Like You - Maroon 5", embedder("https://www.youtube.com/watch?v=aJOTlE1K90k"), songs.length);
+songs.push(ppp);
 var ppp = new Song("Perfect - Ed Sheeran", embedder("https://www.youtube.com/watch?v=iKzRIweSBLA"), songs.length);
 songs.push(ppp);
 ppp = new Song("Without You! - Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"), songs.length);
@@ -9,8 +11,7 @@ ppp = new Song("Sad Song - We The Kings", embedder("https://www.youtube.com/watc
 songs.push(ppp);
 ppp = new Song("Closer - The Chainsmokers", embedder("https://www.youtube.com/watch?v=_bmHvLjsqp8"), songs.length);
 songs.push(ppp);
-ppp = new Song("Girls Like You - Maroon 5", embedder("https://www.youtube.com/watch?v=aJOTlE1K90k"), songs.length);
-songs.push(ppp);
+
 
 function Song(name, link, id) {
     this.name = name;
