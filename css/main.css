@@ -121,6 +121,7 @@ body {
     overflow: auto;
     padding: 0 10px; }
     .rightContainer .right .f-box {
+      transition: 0ms;
       box-sizing: border-box;
       background-color: #dedede;
       animation-duration: 2s;

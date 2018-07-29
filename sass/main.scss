@@ -125,6 +125,7 @@ body {
         overflow: auto;
         padding: 0 10px;
         .f-box {
+            transition: 0ms;
             box-sizing: border-box;
             background-color: $baseBG;
             animation-duration: 2s;

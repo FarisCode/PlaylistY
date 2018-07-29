@@ -34,6 +34,9 @@ function addSong() {
         var temp = new Song(name, embedder(link), songs.length);
         creation(temp);
         songs.push(temp);
+        if (themeSwitchID===1) {
+            forDynamic('backgroundColor','#191d1e','0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
+        }
         document.getElementById("link").style.borderColor = "#bbb";
         document.getElementById("name").value = null;
         document.getElementById("link").value = null;
@@ -177,6 +180,9 @@ function loadPlaylist() {
                         creation(songs[i]);
                     }
                 }
+                if (themeSwitchID===1) {
+                    forDynamic('backgroundColor','#191d1e','0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
+                }
                 swal({ text: "Playlist Loaded!", icon: "success", });
                 for (var i = 0; i < songs.length; i++) {
                     if (songs[i] != undefined) {
@@ -199,14 +205,7 @@ function styling(name, property, value, shadowVal) {
         document.getElementsByClassName(name)[0].style.boxShadow = shadowVal;
     }
     if (name === 'f-box') {
-        let temp = document.getElementsByClassName(name);
-        for (let i = 0; i < temp.length; i++) {
-            const element = temp[i];
-            element.style[property] = value;
-            if (shadowVal != undefined) {
-                element.style.boxShadow = shadowVal;
-            }
-        }
+        forDynamic(property,value,shadowVal);
     }
 }
 function themeSwitch() {
@@ -218,7 +217,6 @@ function themeSwitch() {
         for (let index = 0; index < arr.length; index++) {
             styling(arr[index], 'backgroundColor', '#191d1e', shadowVal);
         }
-        // styling('swal-modal', 'backgroundColor', '#191d1e');
         document.getElementById('dot').style.marginLeft = '20px';
         themeSwitchID = 1;
 
@@ -232,5 +230,15 @@ function themeSwitch() {
         styling('f-box', 'backgroundColor', '#ddd', shadowVal);
         document.getElementById('dot').style.marginLeft = '0px';
         themeSwitchID = 0;
+    }
+}
+function forDynamic(property,value , shadowVal) {
+    let temp = document.getElementsByClassName('f-box');
+    for (let i = 0; i < temp.length; i++) {
+        const element = temp[i];
+        element.style[property] = value;
+        if (shadowVal != undefined) {
+            element.style.boxShadow = shadowVal;
+        }
     }
 }
