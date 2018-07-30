@@ -5,7 +5,7 @@
   -ms-text-overflow: ellipsis; }
 
 body {
-  font-family: 'Eczar', serif;
+  font-family: 'Raleway', sans-serif;
   margin: 0;
   margin-top: 70px;
   padding: 0;
@@ -84,6 +84,7 @@ body {
       width: 100%;
       height: 60vh; } }
   .left #title {
+    font-family: 'Eczar', serif;
     text-transform: uppercase; }
     .left #title i {
       font-size: 0.8em; }
@@ -111,6 +112,7 @@ body {
     align-items: center;
     padding: 5px 15px; }
   .rightContainer h3 {
+    font-family: 'Eczar', serif;
     text-transform: uppercase;
     text-align: center;
     margin: 15px 0; }
@@ -177,6 +179,7 @@ body {
   top: 0;
   z-index: 50; }
   .topFix h1 {
+    font-family: 'Eczar', serif;
     margin: 0;
     font-size: 2em; }
     .topFix h1 i {
