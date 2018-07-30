@@ -137,9 +137,7 @@ function embedder(link) {
     return str + vidCode + "?autoplay=1";
 }
 function savePlaylist() {
-    if (checkEmpty(songs)) {
-        localStorage.setItem('songs', JSON.stringify(songs));
-    }
+    localStorage.setItem('songs', JSON.stringify(songs));
 }
 
 function checkEmpty(arr) {

@@ -12,7 +12,7 @@ body {
     margin-top: 70px;
     padding: 0;
     background-color: $baseBG;
-    font-size: 1.1em;
+    font-size: 1em;
     color: $baseColor;
 }
 
@@ -116,6 +116,7 @@ body {
     .right {
         box-shadow: 0 2px 5px $baseShadow, 0 -2px 5px $baseShadow;
         height: 100%;
+        width: 100%;
         box-sizing: border-box;
         overflow: auto;
         padding: 0 10px;
@@ -131,7 +132,7 @@ body {
             cursor: pointer;
             width: 100%;
             margin: auto;
-            margin-top: 20px;
+            margin-top: 15px;
             height: 50px;
             line-height: 50px;
             border-radius: 2px;
