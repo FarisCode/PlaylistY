@@ -1,9 +1,15 @@
 var songs = [];
 var currSongID;
-themeSwitchID = 0;
-ppp = new Song("Girls Like You - Maroon 5", embedder("https://www.youtube.com/watch?v=aJOTlE1K90k"), songs.length);
+var themeSwitchID = 0;
+var themeSwitchIDCover;
+if (localStorage.getItem('themeSwitchID') != null || localStorage.getItem('themeSwitchID') != undefined) {
+    themeSwitchIDCover = parseInt(localStorage.getItem('themeSwitchID'));
+} else {
+    themeSwitchIDCover = 0;
+}
+var ppp = new Song("Girls Like You - Maroon 5", embedder("https://www.youtube.com/watch?v=aJOTlE1K90k"), songs.length);
 songs.push(ppp);
-var ppp = new Song("Perfect - Ed Sheeran", embedder("https://www.youtube.com/watch?v=iKzRIweSBLA"), songs.length);
+ppp = new Song("Perfect - Ed Sheeran", embedder("https://www.youtube.com/watch?v=iKzRIweSBLA"), songs.length);
 songs.push(ppp);
 ppp = new Song("Without You! - Usher", embedder("https://www.youtube.com/watch?v=ZywDWOaQ9GU"), songs.length);
 songs.push(ppp);
@@ -35,8 +41,8 @@ function addSong() {
         var temp = new Song(name, embedder(link), songs.length);
         creation(temp);
         songs.push(temp);
-        if (themeSwitchID===1) {
-            forDynamic('backgroundColor','#191d1e','0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
+        if (themeSwitchID === 1) {
+            forDynamic('backgroundColor', '#191d1e', '0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
         }
         document.getElementById("link").style.borderColor = "#bbb";
         document.getElementById("name").value = null;
@@ -86,6 +92,8 @@ function deleteSong(id, event) {
         creation(songs[i]);
     }
     play(songs[0]);
+
+    themeSwitch(themeSwitchIDCover);
 })();
 function play(song) {
     if (song != undefined) {
@@ -181,8 +189,8 @@ function loadPlaylist() {
                         creation(songs[i]);
                     }
                 }
-                if (themeSwitchID===1) {
-                    forDynamic('backgroundColor','#191d1e','0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
+                if (themeSwitchID === 1) {
+                    forDynamic('backgroundColor', '#191d1e', '0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
                 }
                 swal({ text: "Playlist Loaded!", icon: "success", });
                 for (var i = 0; i < songs.length; i++) {
@@ -206,21 +214,34 @@ function styling(name, property, value, shadowVal) {
         document.getElementsByClassName(name)[0].style.boxShadow = shadowVal;
     }
     if (name === 'f-box') {
-        forDynamic(property,value,shadowVal);
+        forDynamic(property, value, shadowVal);
     }
 }
-function themeSwitch() {
+function themeSwitch(id) {
     arr = ['topFix', 'left', 'rightContainer', 'f-box'];
-    if (themeSwitchID === 0) {
-        shadowVal = '0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)';
-        document.getElementsByTagName('body')[0].style.backgroundColor = '#191d1e';
-        document.getElementsByTagName('body')[0].style.color = '#dedede';
-        for (let index = 0; index < arr.length; index++) {
-            styling(arr[index], 'backgroundColor', '#191d1e', shadowVal);
-        }
-        document.getElementById('dot').style.marginLeft = '20px';
-        themeSwitchID = 1;
+    if (id === 1 || id === undefined) {
+        if (themeSwitchID === 0) {
+            shadowVal = '0 3px 5px rgba(0, 0, 0, 0.6), 3px 0 5px rgba(0, 0, 0, 0.6)';
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#202626';
+            document.getElementsByTagName('body')[0].style.color = '#dedede';
+            for (let index = 0; index < arr.length; index++) {
+                styling(arr[index], 'backgroundColor', '#191d1e', shadowVal);
+            }
+            document.getElementById('dot').style.marginLeft = '20px';
+            themeSwitchID = 1;
 
+        } else {
+            shadowVal = '0 3px 5px rgba(0, 0, 0, 0.3), 3px 0 5px rgba(0, 0, 0, 0.3)';
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#dedede';
+            document.getElementsByTagName('body')[0].style.color = '#333';
+            for (let index = 0; index < arr.length; index++) {
+                styling(arr[index], 'backgroundColor', '#fff', shadowVal);
+            }
+            styling('f-box', 'backgroundColor', '#ddd', shadowVal);
+            document.getElementById('dot').style.marginLeft = '0px';
+            themeSwitchID = 0;
+        }
+        localStorage.setItem('themeSwitchID', themeSwitchID);
     } else {
         shadowVal = '0 3px 5px rgba(0, 0, 0, 0.3), 3px 0 5px rgba(0, 0, 0, 0.3)';
         document.getElementsByTagName('body')[0].style.backgroundColor = '#dedede';
@@ -233,7 +254,7 @@ function themeSwitch() {
         themeSwitchID = 0;
     }
 }
-function forDynamic(property,value , shadowVal) {
+function forDynamic(property, value, shadowVal) {
     let temp = document.getElementsByClassName('f-box');
     for (let i = 0; i < temp.length; i++) {
         const element = temp[i];

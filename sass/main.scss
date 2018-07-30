@@ -7,12 +7,12 @@
     -ms-text-overflow: ellipsis;
 }
 body {
-    font-family: 'Gaegu', cursive;
+    font-family: 'Eczar', serif;
     margin: 0;
     margin-top: 70px;
     padding: 0;
     background-color: $baseBG;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: $baseColor;
 }
 
@@ -34,7 +34,7 @@ body {
 
 .containTheme {
     @include flex(flex-end);
-    margin-right: 55px;
+    margin-right: 4%;
     .switch {
         transition: 0.3s;
         margin-left: 10px;
