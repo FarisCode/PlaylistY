@@ -7,9 +7,7 @@
     -ms-text-overflow: ellipsis;
 }
 body {
-    // font-family: 'Eczar', serif;
     font-family: 'Raleway', sans-serif;
-
     margin: 0;
     margin-top: 70px;
     padding: 0;
@@ -108,13 +106,6 @@ body {
         width: 100%;
         height: auto;
         margin: 20px 0;
-    }
-    .local {
-        @include dimensions(85px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 15px;
     }
     h3 {
         font-family: 'Eczar', serif;

@@ -103,14 +103,6 @@ body {
       width: 100%;
       height: auto;
       margin: 20px 0; } }
-  .rightContainer .local {
-    height: 85px;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px; }
   .rightContainer h3 {
     font-family: 'Eczar', serif;
     text-transform: uppercase;

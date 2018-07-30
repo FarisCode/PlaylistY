@@ -51,6 +51,7 @@ function addSong() {
         console.log("Invalid YT Link!..");
         document.getElementById("link").style.borderColor = "red";
     }
+    savePlaylist();
 }
 function deleteSong(id, event) {
     event.stopPropagation();
@@ -84,6 +85,7 @@ function deleteSong(id, event) {
                     }
                 }
             }
+            savePlaylist();
         }
     });
 }
@@ -94,6 +96,7 @@ function deleteSong(id, event) {
     play(songs[0]);
 
     themeSwitch(themeSwitchIDCover);
+    loadPlaylist();
 })();
 function play(song) {
     if (song != undefined) {
@@ -134,30 +137,11 @@ function embedder(link) {
     return str + vidCode + "?autoplay=1";
 }
 function savePlaylist() {
-    swal({
-        title: "Are you sure?",
-        text: "Your saved playlist will be overwritten!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            if (checkEmpty(songs)) {
-                localStorage.setItem('songs', JSON.stringify(songs));
-                swal({
-                    text: "Playlist Saved!",
-                    icon: "success",
-                });
-            } else {
-                swal({
-                    text: "Playlist Is Empty, Please Add Some Videos Before Saving Them!",
-                    icon: "error",
-                });
-            }
-        }
-    });
-
+    if (checkEmpty(songs)) {
+        localStorage.setItem('songs', JSON.stringify(songs));
+    }
 }
+
 function checkEmpty(arr) {
     var flag = false;
     console.log(arr);
@@ -173,40 +157,24 @@ function checkEmpty(arr) {
     return flag;
 }
 function loadPlaylist() {
-    swal({
-        title: "Are you sure?",
-        text: "Your current playlist will be overwritten!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            if (checkEmpty(JSON.parse(localStorage.getItem('songs')))) {
-                songs = JSON.parse(localStorage.getItem('songs'));
-                document.getElementById('list').innerHTML = "";
-                for (let i = 0; i < songs.length; i++) {
-                    if (songs[i] != undefined || songs[i] != null) {
-                        creation(songs[i]);
-                    }
-                }
-                if (themeSwitchID === 1) {
-                    forDynamic('backgroundColor', '#191d1e', '0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
-                }
-                swal({ text: "Playlist Loaded!", icon: "success", });
-                for (var i = 0; i < songs.length; i++) {
-                    if (songs[i] != undefined) {
-                        play(songs[i]);
-                        break;
-                    }
-                }
-            } else {
-                swal({
-                    text: "Playlist Is Empty, Please Add Some Videos And Save Them!",
-                    icon: "error",
-                });
+    if (checkEmpty(JSON.parse(localStorage.getItem('songs')))) {
+        songs = JSON.parse(localStorage.getItem('songs'));
+        document.getElementById('list').innerHTML = "";
+        for (let i = 0; i < songs.length; i++) {
+            if (songs[i] != undefined || songs[i] != null) {
+                creation(songs[i]);
             }
         }
-    });
+        if (themeSwitchID === 1) {
+            forDynamic('backgroundColor', '#191d1e', '0 3px 5px rgba(0, 0, 0, 0.8), 3px 0 5px rgba(0, 0, 0, 0.8)');
+        }
+        for (var i = 0; i < songs.length; i++) {
+            if (songs[i] != undefined) {
+                play(songs[i]);
+                break;
+            }
+        }
+    }
 }
 function styling(name, property, value, shadowVal) {
     document.getElementsByClassName(name)[0].style[property] = value;
